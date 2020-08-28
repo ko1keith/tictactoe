@@ -1,2 +1,59 @@
 @import 'bootstrap/dist/css/bootstrap';
 
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+:root{
+    --cell-size:100px;
+    --mark-size: cal(var(--cell-size) * 0.9);
+}
+
+body{
+    margin:0;
+}
+
+.board{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;  /* center items inside board */
+    align-items:center;
+    grid-template-columns: repeat(3, auto) /* create 3 x 3 grid */ 
+}
+
+.cell{
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid black;
+}
+
+/* remove border from top three cells */
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+
+/* remove border from left three cells */
+.cell:nth-child(3n+1){
+    border-left: none;
+}
+
+/* remove border from right three cells */
+.cell:nth-child(3n+3){
+    border-right: none;
+}
+
+/* remove border from bottom three cells */
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8){
+    border-bottom: none;
+}
+
+.cell.x{
+    background-color: red;
+}
